@@ -1,0 +1,14 @@
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+__pycache__/
+
+# Внутреннее задание — не для публичного репозитория.
+CLAUDE_TASK.md
+
+# Собранные APK и локальные приёмочные артефакты не храним в git.
+dist/*.apk
+dist/*.png
+dist/*.xml

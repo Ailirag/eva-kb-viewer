@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-08-21T09:30:00Z",
+  "stats": {
+    "articles": 1284,
+    "requestsPerMonth": 3417
+  },
+  "requestsByMonth": [
+    { "month": "янв", "value": 1980 },
+    { "month": "фев", "value": 2140 },
+    { "month": "мар", "value": 2460 },
+    { "month": "апр", "value": 2310 },
+    { "month": "май", "value": 2705 },
+    { "month": "июн", "value": 2890 },
+    { "month": "июл", "value": 3050 },
+    { "month": "авг", "value": 3417 },
+    { "month": "сен", "value": 3180 },
+    { "month": "окт", "value": 2960 },
+    { "month": "ноя", "value": 2740 },
+    { "month": "дек", "value": 2205 }
+  ]
+}

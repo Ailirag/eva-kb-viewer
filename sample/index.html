@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Пакет автономный. Сеть блокирует само приложение; CSP здесь — второй контур.
+       Директивы намеренно не трогают script-src/style-src: у file:// источник
+       непрозрачный, и 'self' сломал бы загрузку локальных assets/**. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <title>База знаний Eva — сводка</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="viz-root" data-palette="#2a78d6">
+
+  <header class="page-head">
+    <h1>База знаний Eva</h1>
+    <p class="updated">Обновлено: <span id="updated-at">—</span></p>
+  </header>
+
+  <nav class="nav" role="tablist" aria-label="Разделы отчёта">
+    <button class="nav-item is-active" role="tab" aria-selected="true" data-section="overview">Обзор</button>
+    <button class="nav-item" role="tab" aria-selected="false" data-section="dynamics">Динамика</button>
+    <button class="nav-item" role="tab" aria-selected="false" data-section="table">Данные</button>
+  </nav>
+
+  <main>
+    <section id="overview" class="section is-active" role="tabpanel">
+      <div class="cards">
+        <article class="card">
+          <p class="card-label">Статей в базе</p>
+          <p class="card-value" id="stat-articles">—</p>
+          <p class="card-delta is-good" id="stat-articles-delta">—</p>
+        </article>
+        <article class="card">
+          <p class="card-label">Обращений за месяц</p>
+          <p class="card-value" id="stat-requests">—</p>
+          <p class="card-delta is-good" id="stat-requests-delta">—</p>
+        </article>
+      </div>
+      <p class="note">
+        Отчёт открыт локально из пакета <code>.evakb</code>: сеть не используется,
+        данные не покидают устройство.
+      </p>
+    </section>
+
+    <section id="dynamics" class="section" role="tabpanel">
+      <h2 class="chart-title">Обращения в базу знаний по месяцам, 2026</h2>
+      <p class="chart-sub">Значения — количество обращений; подписана максимальная точка.</p>
+      <figure class="chart-figure">
+        <div id="chart" class="chart"></div>
+        <div id="tooltip" class="tooltip" hidden></div>
+        <figcaption class="chart-caption">
+          Полный набор значений — в разделе «Данные».
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="table" class="section" role="tabpanel">
+      <h2 class="chart-title">Обращения по месяцам</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th scope="col">Месяц</th><th scope="col" class="num">Обращения</th></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

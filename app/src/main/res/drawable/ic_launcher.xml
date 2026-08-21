@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#2F6BFF"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- Столбики диаграммы: узнаваемо для отчёта. -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M26,66h11v22h-11z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48.5,46h11v42h-11z" />
+    <path
+        android:fillColor="#C9DBFF"
+        android:pathData="M71,56h11v32h-11z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M22,22h64v6h-64z" />
+</vector>
