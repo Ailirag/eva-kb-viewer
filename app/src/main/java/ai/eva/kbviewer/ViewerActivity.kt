@@ -65,26 +65,29 @@ class ViewerActivity : Activity() {
 
     private fun harden(view: WebView, root: File) {
         view.settings.apply {
-            javaScriptEnabled = true // графики в пакете рисуются на JS
-            domStorageEnabled = true
+            javaScriptEnabled = ViewerWebPolicy.JAVA_SCRIPT_ENABLED
+            domStorageEnabled = ViewerWebPolicy.DOM_STORAGE_ENABLED
 
             // Сеть: пакет обязан быть автономным.
-            blockNetworkLoads = true
-            blockNetworkImage = true
+            blockNetworkLoads = ViewerWebPolicy.BLOCK_NETWORK_LOADS
+            blockNetworkImage = ViewerWebPolicy.BLOCK_NETWORK_IMAGE
             cacheMode = WebSettings.LOAD_NO_CACHE
 
             // Файлы: только внутри распакованного пакета.
-            allowFileAccess = true
-            allowContentAccess = false
+            allowFileAccess = ViewerWebPolicy.ALLOW_FILE_ACCESS
+            allowContentAccess = ViewerWebPolicy.ALLOW_CONTENT_ACCESS
             @Suppress("DEPRECATION")
-            allowFileAccessFromFileURLs = false
+            allowFileAccessFromFileURLs = ViewerWebPolicy.ALLOW_FILE_ACCESS_FROM_FILE_URLS
             @Suppress("DEPRECATION")
-            allowUniversalAccessFromFileURLs = false
+            allowUniversalAccessFromFileURLs =
+                ViewerWebPolicy.ALLOW_UNIVERSAL_ACCESS_FROM_FILE_URLS
 
-            javaScriptCanOpenWindowsAutomatically = false
-            setSupportMultipleWindows(false)
+            javaScriptCanOpenWindowsAutomatically =
+                ViewerWebPolicy.JAVA_SCRIPT_CAN_OPEN_WINDOWS_AUTOMATICALLY
+            setSupportMultipleWindows(ViewerWebPolicy.SUPPORT_MULTIPLE_WINDOWS)
             setGeolocationEnabled(false)
-            mediaPlaybackRequiresUserGesture = true
+            mediaPlaybackRequiresUserGesture =
+                ViewerWebPolicy.MEDIA_PLAYBACK_REQUIRES_USER_GESTURE
             builtInZoomControls = true
             displayZoomControls = false
         }
