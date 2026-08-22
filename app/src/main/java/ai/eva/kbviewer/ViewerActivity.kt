@@ -94,6 +94,7 @@ class ViewerActivity : Activity() {
     }
 
     private inner class PackageWebViewClient(private val root: File) : WebViewClient() {
+        private val resources = PackageResourceResolver(root)
 
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
             val url = request.url
@@ -113,11 +114,16 @@ class ViewerActivity : Activity() {
             view: WebView,
             request: WebResourceRequest,
         ): WebResourceResponse? {
-            val scheme = request.url.scheme?.lowercase()
-            if (scheme == "file" && isInsidePackage(request.url)) {
-                return null // отдаём WebView читать файл пакета как обычно
+            val resource = resources.resolve(request.url.toString()) ?: return BLOCKED
+            return try {
+                WebResourceResponse(
+                    resource.mimeType,
+                    resource.encoding,
+                    resource.file.inputStream(),
+                )
+            } catch (_: Exception) {
+                BLOCKED
             }
-            return BLOCKED
         }
 
         private fun isInsidePackage(uri: Uri): Boolean {
